@@ -20,12 +20,29 @@
   [<ReflectedDefinition>]
   let newStory (ctx: ictx) = ()
 
+  [<FormData>]
+  type storyForm = {
+    username:string;
+    title:string;
+    story:string
+    }
+
   [<Bind("post /new")>]
   [<ReflectedDefinition>]
-  let createStory (ctx: ictx) (user:string form) (title:string form) (body:string form) = 
-    Stories.save (user.Value,title.Value,body.Value)
+  let createStory (ctx: ictx) (form:storyForm) = 
+    Stories.save {
+      User = form.username;
+      Title = form.title;
+      Story = form.story
+    }
     ctx.Transfer("/");
-  
+
+  [<Bind("/read/{title}")>]
+  [<RenderWith("Views/read.django")>]
+  [<ReflectedDefinition>]
+  let readStory (ctx:ictx) title =
+    Stories.findByTitle title |> named "story"
+    
   [<Bind("get *")>]
   [<ReflectedDefinition>]
   let topics (cts:ictx) =

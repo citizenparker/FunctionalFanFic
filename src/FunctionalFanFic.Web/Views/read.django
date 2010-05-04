@@ -1,0 +1,10 @@
+﻿{% extends "Views\base.django" %}
+
+{% block content %}
+  <h1>{{story.Title}} by {{ story.User }}</h1>
+
+  <p>{{story.Story}}</p>
+
+  Liked this? <a href="/new">Create your own story!</a><br />
+  Not so great? <a href="/">Return home</a><br />
+{% endblock %}

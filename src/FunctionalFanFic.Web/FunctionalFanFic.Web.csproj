@@ -44,6 +44,7 @@
     <None Include="Views\base.django" />
     <None Include="Views\home.django" />
     <None Include="Views\new.django" />
+    <None Include="Views\read.django" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Bistro.Core">

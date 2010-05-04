@@ -6,7 +6,11 @@
   <p>Here you will find the latest and greatest fan fiction stories to have been created by mankind. So go nuts!</p>
 
   {% for story in stories %}
-    <p>{{story}}</p>
+    <p>
+      User: {{ story.User }}<br />
+      Title: {{ story.Title }}<br />
+      <a href="{% url '/read/{0}' story.Title %}">Read this story!</a>
+    </p>
   {% endfor %}
 
   <a href="/new">Create your own story!</a><br />
