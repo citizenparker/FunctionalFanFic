@@ -1,0 +1,13 @@
+﻿{% extends "Views\base.django" %}
+
+{% block content %}
+  <h1>Welcome to Functional Fan Fiction!</h1>
+
+  <p>Here you will find the latest and greatest fan fiction stories to have been created by mankind. So go nuts!</p>
+
+  {% for story in stories %}
+    <p>{{story}}</p>
+  {% endfor %}
+
+  <a href="/new">Create your own story!</a><br />
+{% endblock %}
