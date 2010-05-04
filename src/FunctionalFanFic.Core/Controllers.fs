@@ -25,3 +25,8 @@
   let createStory (ctx: ictx) (user:string form) (title:string form) (body:string form) = 
     Stories.save (user.Value,title.Value,body.Value)
     ctx.Transfer("/");
+  
+  [<Bind("get *")>]
+  [<ReflectedDefinition>]
+  let topics (cts:ictx) =
+    Topics.generateTopics 5 |> named "topics"
